@@ -1,0 +1,27 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: app-demo
+  namespace: production
+spec:
+  chart:
+    spec:
+      chart: app-demo
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: helm-charts
+        namespace: production
+      version: 0.0.1
+  interval: 1m0s
+  values:
+    replicaCount: 3
+    containerPort: 5000
+    dockerImage: tham29/fluxappdemo:RELEASE.2022-01-16T05-42-20Z # {"$imagepolicy": "flux-system:app-demo"}
+    namespace: "production"
+    domain: "app-demo-cluster1.domain.tld"
+    changeCause: "First Deployment cluster 1"
+    message: "cluster1"
+    appname: "app-demo-cluster1"
+    node: "machine1"
