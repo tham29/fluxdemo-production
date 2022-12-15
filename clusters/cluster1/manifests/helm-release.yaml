@@ -25,4 +25,4 @@ spec:
     changeCause: "First Deployment cluster 1"
     message: "cluster1"
     appname: "app-demo-cluster1"
-    node: "machine1"
+    node: "raspberry"
